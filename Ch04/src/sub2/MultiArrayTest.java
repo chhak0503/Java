@@ -40,7 +40,6 @@ public class MultiArrayTest {
 			                {22, 23, 24},
 			                {25, 26, 27}}};
 		
-				
 		for(int a=0; a<3; a++) {
 			for(int b=0; b<3; b++) {
 				for(int c=0; c<3; c++) {
