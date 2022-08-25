@@ -4,7 +4,7 @@ public class Account {
 	// 속성
 	String bank;
 	String id;
-	String name;
+	String name; 
 	int balance;
 	
 	// 기능

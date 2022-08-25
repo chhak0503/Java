@@ -6,7 +6,7 @@ public class Car {
 	// 자동차의 속성(변수)
 	String name;
 	String color;
-	int speed;
+	int speed;	 
 	
 	// 자동차의 기능(메서드)
 	public void speedUp(int speed) {

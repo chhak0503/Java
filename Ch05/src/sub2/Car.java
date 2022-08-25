@@ -15,7 +15,7 @@ public class Car {
 		this.speed = speed;
 	}
 	
-	// Getter, Setter
+	// Getter, Setter 
 	public String getName() {
 		return name;
 	}

@@ -3,7 +3,7 @@ package sub2;
 public class Account {	
 	// 속성
 	private String bank;
-	private String id;
+	private String id; 
 	private String name;
 	private int balance;
 	
