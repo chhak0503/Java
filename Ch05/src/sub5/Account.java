@@ -2,10 +2,10 @@ package sub5;
 
 public class Account {	
 	// 속성
-	private String bank;
-	private String id; 
-	private String name;
-	private int balance;
+	protected String bank;
+	protected String id; 
+	protected String name;
+	protected int balance;
 	
 	public Account(String bank, String id, String name, int balance) {
 		this.bank = bank;

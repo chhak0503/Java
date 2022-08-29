@@ -4,8 +4,12 @@ package sub5;
  * 날짜 : 2022/08/29
  * 이름 : 김철학
  * 내용 : Java 클래스 상속 실습하기
+ * 
+ * 상속(Inheritance)
+ *  - 기존 클래스의 속성과 기능을 그대로 자식 클래스에게 물려주는 클래스 확장 문법
+ *  - 공통적인 로직 내용을 부모클래스에 두고 자식 클래스에서 상속 받아 일관성 있는 프로그래밍 수행 
+ *  - 부모 클래스의 속성 접근권한은 protected 선언해서 자식 클래스에서만 참조 되도록 수정
  */
-
 class Parent {
 	private int num1;
 	private int num2;
@@ -61,6 +65,14 @@ public class InheritTest {
 		bongo.load(100);
 		bongo.speedUp(80);		
 		bongo.show();
+		
+		// Account 자식클래스 객체 생성
+		StockAccount kb = new StockAccount("KB증권", "101-12-1001", "홍길동", 0, "삼성전자", 0, 0);
+		kb.deposit(1000000);
+		kb.buy(10, 70000);
+		kb.sell(5, 75000);
+		kb.withdraw(200000);
+		kb.show();
 	}
 }
 
