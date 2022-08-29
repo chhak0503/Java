@@ -6,47 +6,64 @@ package sub4;
  * 내용 : 싱글톤 객체와 인스턴스 객체 실습 
  */
 class Adder {
-	public static int x;
 	
-	public void add(int _x) {
-		x = _x;
+	private static Adder instance = new Adder();
+	public static Adder getInstance() {
+		return instance;
+	}
+	private Adder() {}
+	private Adder(int value) {
+		y += value;
+	}
+	
+	public int x;
+	public static int y;
+	
+	public void add(int x, int y) {
+		this.x += x;
+		y++;
 	}
 	
 	public void add(int[] arr) {
-		arr[0]++;
+		x += arr[0];
+		y += arr[1];
 	}
 	
-	public static void add(Adder a1) {
-		a1.x += 20;
+	public static void add(Adder a2) {
+		a2.x += 10;		
 	}
 	
-	public static Adder add(Adder a2, int value) {
-		return new Adder();
-	}	
+	public static Adder add(Adder a3, int value) {
+		return new Adder(value);
+	}
+	
+	public void show() {
+		System.out.println("x : " + x);
+		System.out.println("y : " + y);
+	}
 }
 
 public class AdderTest {
 
 	public static void main(String[] args) {
 		
-		int[] arr = new int[3];
+		int[] arr = new int[2];
 		arr[0] = 1;
 		arr[1] = 2;
-		arr[2] = 3;
 		
-		Adder adder = new Adder();
+		Adder a1 = Adder.getInstance();
 		
-		adder.add(1);
-		System.out.println("1) x : " + Adder.x);
+		a1.add(1, 2);
+		a1.show();
 		
-		adder.add(arr);
-		System.out.println("2) x : " + Adder.x);
+		a1.add(arr);
+		a1.show();
 		
-		Adder.add(adder);
-		System.out.println("3) x : " + Adder.x);
+		Adder.add(a1);
+		a1.show();
 		
-		adder = Adder.add(adder, 0);
-		System.out.println("4) x : " + Adder.x);
+		a1 = Adder.add(a1, 3);
+		a1.show();
 		
 	}
 }
