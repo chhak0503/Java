@@ -9,8 +9,8 @@ import java.util.Set;
  * 내용 : 자료구조 집합 실습하기
  * 
  * Set
- *  - 
- *  - 
+ *  - 입력된 데이터의 순서를 고려하지 않고, 중복을 허용하지 않은 자료구조
+ *  - 중복된 데이터를 제거하거나 이미 데이터가 존재하는지 검사할때 사용
  */
 public class SetTest {
 	public static void main(String[] args) {

@@ -11,8 +11,8 @@ import java.util.Map;
  * 내용 : 자료구조 Map 실습하기
  * 
  * Map
- *  - 
- *  - 
+ *  - 키-값(Key-Value) 쌍으로 이루어진 자료구조
+ *  - HashMap은 Map을 구현한 클래스로 키를 이용하기 때문에 List보다 빠른 탐색 성능 보장
  */
 public class MapTest {
 	public static void main(String[] args) {
