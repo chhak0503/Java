@@ -12,7 +12,7 @@ import java.io.FileOutputStream;
  * 
  * 버퍼 스트림
  *  - 기본 입출력에 Buffer를 추가해서 빠른 입출력을 지원하는 스트림
- *  - 기본 입출력에 무조건 장착해야 실행 성능 향상
+ *  - 기본 입출력에 장착해 실행 성능 향상
  */
 public class BufferIOTest {
 	public static void main(String[] args) {
