@@ -9,7 +9,7 @@ package sub2;
  *  - 메인 스레드에서 파생된 자식 스레드 작업이 완료된 후 다시 메인스레드로 합류
  *  - 메인 스레드에서 자식 스레드 작업완료를 대기 
  */
-public class ThreadJoinTest {
+public class ThreadJoinTest {	
 	public static void main(String[] args) throws InterruptedException {
 		
 		Count count = new Count();
