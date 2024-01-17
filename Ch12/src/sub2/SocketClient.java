@@ -1,6 +1,7 @@
 package sub2;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -37,7 +38,19 @@ public class SocketClient {
 			
 			System.out.println("데이터 송신 완료...");
 			
+			// 데이터 수신(Server -> Client)
+			InputStream is = socket.getInputStream();
+			byte[] bytes = new byte[100];
+			int readBytes = is.read(bytes);
 			
+			String result = new String(bytes, 0, readBytes, "UTF-8");
+			System.out.println(result);
+			
+			System.out.println("데이터 수신 완료...");
+			
+			
+			os.close();
+			is.close();
 			
 		} catch (IOException e) {
 			e.printStackTrace();

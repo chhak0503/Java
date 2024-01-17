@@ -2,6 +2,7 @@ package sub2;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -37,8 +38,21 @@ public class SocketServer {
 			
 			System.out.println("데이터 수신 완료...");
 			
+			// 데이터 송신(Server -> Client)
+			OutputStream os = socket.getOutputStream();
+			String msg = "Hello Client!";
+			
+			byte[] msgBytes = msg.getBytes();
+			os.write(msgBytes);
+			os.flush();
+			
+			System.out.println("데이터 송신 완료...");
+			
+			
 			
 			socket.close();
+			os.close();
+			is.close();
 			
 		}catch (Exception e) {
 			e.printStackTrace();
