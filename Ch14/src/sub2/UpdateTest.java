@@ -9,8 +9,9 @@ import java.sql.Statement;
  * 이름 : 김철학
  * 내용 : Insert 실습하기
  */
-public class InsertTest {
+public class UpdateTest {
 	public static void main(String[] args) {
+		
 		
 		// DB정보
 		String host = "jdbc:mysql://127.0.0.1:3306/studydb";
@@ -28,7 +29,7 @@ public class InsertTest {
 			Statement stmt = conn.createStatement();
 			
 			// 4단계 - SQL 실행
-			String sql = "INSERT INTO `User1` VALUES ('P101', '김유신', '90-01-22', '010-1234-0001', 23)";
+			String sql = "UPDATE `User1` SET `hp`='010-1234-0002', `age`=27 WHERE `uid`='P101'";
 			stmt.executeUpdate(sql);
 			
 			// 5단계 - 결과 처리(SELECT 경우)
@@ -40,17 +41,6 @@ public class InsertTest {
 			e.printStackTrace();
 		}
 		
-		System.out.println("INSERT 완료...");
+		System.out.println("Update 완료...");
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
