@@ -7,7 +7,7 @@ import java.sql.Statement;
 /*
  * 날짜 : 2024/01/22
  * 이름 : 김철학
- * 내용 : Insert 실습하기
+ * 내용 : Update 실습하기
  */
 public class UpdateTest {
 	public static void main(String[] args) {
