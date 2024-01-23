@@ -16,15 +16,14 @@ import java.util.List;
  *  - 기존 Statement 보다 향상된 동적 SQL 생성을 위한 Statement
  *  - Query Parameter를 사용해서 값을 Mapping(사상, 바인딩) 해서 쿼리 실행
  *  
- *  
  * VO객체
  *  - VO(Value Object)객체는 SELECT의 결과 테이블 속성을 갖는 객체
  *  - 테이블 개체(Entity)를 객체(Object)로 변환할 때 사용하는 객체
  *  - JSP, Spring에서는 DTO(Data Transfer Object)로 사용 
  */
 public class PreparedSelectTest {
-
 	public static void main(String[] args) {
+		
 		// DB정보
 		String host = "jdbc:mysql://127.0.0.1:3306/studydb";
 		String user = "chhak";
