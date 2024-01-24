@@ -68,10 +68,31 @@ public class CRUDTest {
 				
 			}else if(answer == 4) {
 				// 수정
+				UserDTO user = new UserDTO();
+						
+				System.out.print("수정 회원 아이디 입력 : ");
+				user.setUid(sc.next());
+				
+				System.out.print("수정 회원 이름 입력 : ");
+				user.setName(sc.next());
+				
+				System.out.print("수정 회원 생년월일 입력 : ");
+				user.setBirth(sc.next());
+				
+				System.out.print("수정 회원 주소 입력 : ");
+				user.setAddr(sc.next());
+				
+				dao.updateUser(user);
+				
+				System.out.println("수정완료...");
 				
 			}else if(answer == 5) {
 				// 삭제
+				System.out.print("삭제할 회원 아이디 입력 : ");
+				String uid = sc.next();
 				
+				dao.deleteUser(uid);
+				System.out.println("삭제완료...");
 			}
 		}
 		

@@ -25,38 +25,50 @@ public class UserDAO {
 	private final String PASS = "abc1234";
 	
 	// DB자원
-	private Connection conn;
-	private Statement stmt;
-	private PreparedStatement psmt;
-	private ResultSet rs;
+	private Connection conn = null;
+	private Statement stmt = null;
+	private PreparedStatement psmt = null;
+	private ResultSet rs = null;
 	
-	// 커넥션 생성
+	// 커넥션 생성 메서드
 	private Connection getConnection() throws ClassNotFoundException, SQLException {
-		// 1단계
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		// 2단계
 		return DriverManager.getConnection(HOST, USER, PASS);
 	}
+	
+	// 자원해제 메서드
+	private void close() throws SQLException {
+		
+		if(rs != null) {
+			rs.close();
+		}
+		
+		if(psmt != null) {
+			psmt.close();
+		}
+		
+		if(stmt != null) {
+			stmt.close();
+		}
+		
+		if(conn != null) {
+			conn.close();
+		}
+	}
+	
 	
 	// CRUD 메서드
 	public void insertUser(UserDTO user) {
 		
 		try {
 			conn = getConnection();
-			// 3단계
 			psmt = conn.prepareStatement(SQL.INSERT_USER);
 			psmt.setString(1, user.getUid());
 			psmt.setString(2, user.getName());
 			psmt.setString(3, user.getBirth());
 			psmt.setString(4, user.getAddr());
-			
-			// 4단계
 			psmt.executeUpdate();
-			
-			// 5단계
-			// 6단계
-			psmt.close();
-			conn.close();
+			close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -68,11 +80,9 @@ public class UserDAO {
 		
 		try {
 			conn = getConnection();
-			// 3단계
 			stmt = conn.createStatement();
-			// 4단계
 			rs = stmt.executeQuery(SQL.SELECT_USERS);
-			// 5단계
+			
 			while(rs.next()) {
 				UserDTO dto = new UserDTO();
 				dto.setUid(rs.getString(1));
@@ -83,10 +93,7 @@ public class UserDAO {
 				users.add(dto);
 			}
 			
-			// 6단계
-			rs.close();
-			stmt.close();
-			conn.close();
+			close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -100,12 +107,10 @@ public class UserDAO {
 		
 		try {
 			conn = getConnection();
-			// 3단계
 			psmt = conn.prepareStatement(SQL.SELECT_USER);
 			psmt.setString(1, uid);
-			// 4단계
 			rs = psmt.executeQuery();
-			// 5단계
+
 			if(rs.next()) {
 				user = new UserDTO();
 				user.setUid(rs.getString(1));
@@ -114,10 +119,7 @@ public class UserDAO {
 				user.setAddr(rs.getString(4));
 			}
 			
-			// 6단계
-			rs.close();
-			psmt.close();
-			conn.close();
+			close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -125,25 +127,33 @@ public class UserDAO {
 		return user;
 	}
 	
-	public void updateUser() {
+	public void updateUser(UserDTO user) {
 		
 		try {
-			// 3단계
-			// 4단계
-			// 5단계
-			// 6단계
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_USER);
+			psmt.setString(1, user.getName());
+			psmt.setString(2, user.getBirth());
+			psmt.setString(3, user.getAddr());
+			psmt.setString(4, user.getUid());
+			psmt.executeUpdate();
+			
+			close();
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void deleteUser() {
+	public void deleteUser(String uid) {
 		
 		try {
-			// 3단계
-			// 4단계
-			// 5단계
-			// 6단계
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.DELETE_USER);
+			psmt.setString(1, uid);
+			psmt.executeUpdate();
+			
+			close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
