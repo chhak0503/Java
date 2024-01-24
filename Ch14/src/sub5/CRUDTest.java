@@ -1,5 +1,6 @@
 package sub5;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -19,6 +20,7 @@ public class CRUDTest {
 			System.out.print("선택> ");
 			
 			int answer = sc.nextInt();
+			UserDAO dao = UserDAO.getInstance();
 			
 			if(answer == 0) {
 				break;
@@ -38,7 +40,6 @@ public class CRUDTest {
 				System.out.print("주소 입력 : ");
 				dto.setAddr(sc.next());
 							
-				UserDAO dao = UserDAO.getInstance();
 				dao.insertUser(dto);
 				
 				System.out.println("등록완료...");
@@ -46,9 +47,24 @@ public class CRUDTest {
 				
 			}else if(answer == 2) {
 				// 조회
+				List<UserDTO> users = dao.selectUsers();
+				
+				for(UserDTO user : users) {
+					System.out.println(user);
+				}
 				
 			}else if(answer == 3) {
 				// 검색
+				System.out.print("아이디 검색 : ");
+				String uid = sc.next();
+				
+				UserDTO user = dao.selectUser(uid);
+				
+				if(user == null) {
+					System.out.println("해당하는 아이디를 가진 사용자가 없습니다.");
+				}else {
+					System.out.println(user);
+				}
 				
 			}else if(answer == 4) {
 				// 수정

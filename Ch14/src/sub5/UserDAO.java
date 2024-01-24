@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 // Data Access Object(데이터베이스 CRUD 처리 객체)
 public class UserDAO {
@@ -60,28 +62,67 @@ public class UserDAO {
 		}
 	}
 	
-	public void selectUsers() {
+	public List<UserDTO> selectUsers() {
+		
+		List<UserDTO> users = new ArrayList<>();
 		
 		try {
+			conn = getConnection();
 			// 3단계
+			stmt = conn.createStatement();
 			// 4단계
+			rs = stmt.executeQuery(SQL.SELECT_USERS);
 			// 5단계
+			while(rs.next()) {
+				UserDTO dto = new UserDTO();
+				dto.setUid(rs.getString(1));
+				dto.setName(rs.getString(2));		
+				dto.setBirth(rs.getString(3));		
+				dto.setAddr(rs.getString(4));		
+				
+				users.add(dto);
+			}
+			
 			// 6단계
+			rs.close();
+			stmt.close();
+			conn.close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return users;
 	}
 	
-	public void selectUser() {
+	public UserDTO selectUser(String uid) {
+		
+		UserDTO user = null;
 		
 		try {
+			conn = getConnection();
 			// 3단계
+			psmt = conn.prepareStatement(SQL.SELECT_USER);
+			psmt.setString(1, uid);
 			// 4단계
+			rs = psmt.executeQuery();
 			// 5단계
+			if(rs.next()) {
+				user = new UserDTO();
+				user.setUid(rs.getString(1));
+				user.setName(rs.getString(2));
+				user.setBirth(rs.getString(3));
+				user.setAddr(rs.getString(4));
+			}
+			
 			// 6단계
+			rs.close();
+			psmt.close();
+			conn.close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return user;
 	}
 	
 	public void updateUser() {
