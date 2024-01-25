@@ -1,8 +1,10 @@
 package com.myshop.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.myshop.db.DBHelper;
+import com.myshop.db.SQL;
 import com.myshop.dto.OrderDTO;
 
 public class OrderDAO extends DBHelper{
@@ -35,17 +37,42 @@ public class OrderDAO extends DBHelper{
 		}
 		return null;
 	}
-	public List<OrderDTO> selectOrders() {
+	
+	
+	public List<OrderDTO> selectOrders(String custId) {
+		
+		List<OrderDTO> orders = new ArrayList<>();
+		
 		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_ORDERS);
+			psmt.setString(1, custId);
+			rs = psmt.executeQuery();
 			
-			// 3단계
-			// 4단계
-			// 5단계
+			while(rs.next()) {
+				
+				OrderDTO order = new OrderDTO();
+				order.setOrderNo(rs.getInt(1));
+				order.setOrderId(rs.getString(2));
+				order.setOrderProduct(rs.getInt(3));
+				order.setOrderCount(rs.getInt(4));
+				order.setOrderDate(rs.getString(5));
+				order.setProdName(rs.getString(6));
+				order.setPrice(rs.getInt(7));
+				order.setCompany(rs.getString(8));
+				
+				orders.add(order);
+			}
+			
+			close();
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return orders;
 	}
+	
+	
 	public void updateOrder(OrderDTO dto) {
 		try {
 			

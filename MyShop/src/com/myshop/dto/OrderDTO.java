@@ -8,6 +8,32 @@ public class OrderDTO {
 	private int orderCount;
 	private String orderDate;
 	
+	// 추가필드
+	private String prodName;
+	private int price;
+	private String company;
+	
+	public String getProdName() {
+		return prodName;
+	}
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	
 	public int getOrderNo() {
 		return orderNo;
 	}

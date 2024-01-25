@@ -19,11 +19,14 @@ public class CustomerDAO extends DBHelper {
 	// CRUD 메서드
 	public void insertCustomer(CustomerDTO dto) {
 		try {
-			
-			// 3단계
-			// 4단계
-			// 5단계
-			// 6단계
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.INSERT_CUSTOMER);
+			psmt.setString(1, dto.getCustId());
+			psmt.setString(2, dto.getName());
+			psmt.setString(3, dto.getHp());
+			psmt.setString(4, dto.getAddr());
+			psmt.executeUpdate();
+			close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
