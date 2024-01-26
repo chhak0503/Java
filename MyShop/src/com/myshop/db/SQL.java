@@ -15,7 +15,12 @@ public class SQL {
 	public static final String DELETE_CUSTOMER = "";
 	
 	// Order
-	public static final String INSERT_ORDER = "";
+	public static final String INSERT_ORDER = "INSERT INTO `Order` SET "
+											+ "`orderId`=?,"
+											+ "`orderProduct`=?,"
+											+ "`orderCount`=?,"
+											+ "`orderDate`=NOW()";
+	
 	public static final String SELECT_ORDER = "";
 	public static final String SELECT_ORDERS = "SELECT a.*, `prodName`, `price`, `company` FROM `order` AS a "
 											 + "JOIN `Product` as b on a.orderProduct = b.prodNo "
@@ -27,8 +32,11 @@ public class SQL {
 	// Product
 	public static final String INSERT_PRODUCT = "";
 	public static final String SELECT_PRODUCT = "";
-	public static final String SELECT_PRODUCTS = "";
+	public static final String SELECT_PRODUCTS = "SELECT * FROM `product`";
 	public static final String UPDATE_PRODUCT = "";
+	public static final String UPDATE_PRODUCT_STOCK = "UPDATE `Product` SET `stock` = `stock` - ? "
+													+ "WHERE `prodNo`=?";
+	
 	public static final String DELETE_PRODUCT = "";
 	
 	

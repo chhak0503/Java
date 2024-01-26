@@ -66,7 +66,19 @@ public class OrderDTO {
 	}
 	@Override
 	public String toString() {
-		return "OrderDTO [orderNo=" + orderNo + ", orderId=" + orderId + ", orderProduct=" + orderProduct
-				+ ", orderCount=" + orderCount + ", orderDate=" + orderDate + "]";
+		return orderNo + "," 
+				+ orderId + "," 
+				+ orderProduct + "," 
+				+ prodName + "," 
+				+ price + "," 
+				+ company + "," 
+				+ orderCount + "," 
+				+ orderDate;
 	}
 }
+
+
+
+
+
+

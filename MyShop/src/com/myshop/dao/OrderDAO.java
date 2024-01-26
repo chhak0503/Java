@@ -1,5 +1,6 @@
 package com.myshop.dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +20,30 @@ public class OrderDAO extends DBHelper{
 	
 	public void insertOrder(OrderDTO dto) {
 		try {
-			// 3단계
-			// 4단계
-			// 5단계
+			conn = getConnection();
+			conn.setAutoCommit(false);
+			psmt = conn.prepareStatement(SQL.INSERT_ORDER);
+			psmt.setString(1, dto.getOrderId());
+			psmt.setInt(2, dto.getOrderProduct());
+			psmt.setInt(3, dto.getOrderCount());
+			
+			psmtEtc = conn.prepareStatement(SQL.UPDATE_PRODUCT_STOCK);
+			psmtEtc.setInt(1, dto.getOrderCount());
+			psmtEtc.setInt(2, dto.getOrderProduct());					
+			
+			psmt.executeUpdate();
+			psmtEtc.executeUpdate();
+			conn.commit();		
+			
+			close();
+			
 		}catch (Exception e) {
 			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 	public OrderDTO selectOrder(int orderNo) {

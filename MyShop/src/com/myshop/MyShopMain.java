@@ -8,6 +8,7 @@ import com.myshop.dao.OrderDAO;
 import com.myshop.dao.ProductDAO;
 import com.myshop.dto.CustomerDTO;
 import com.myshop.dto.OrderDTO;
+import com.myshop.dto.ProductDTO;
 
 /**
  * 날짜 : 2024/01/25
@@ -92,9 +93,38 @@ public class MyShopMain {
 					for(OrderDTO order : orders) {
 						System.out.println(order);
 					}
-					
+					System.out.println("----------------------");
 				}
 				
+			}else if(answer == 3) {
+				// 상품목록
+				List<ProductDTO> products = productDAO.selectProducts();
+				
+				// 상품출력
+				products.stream().forEach(System.out::println);
+				
+			}else if(answer == 4) {
+				// 주문하기
+				
+				if(loginedCustomer == null) {
+					System.out.println("로그인을 먼저 하십시오.");
+					continue;
+				}
+				
+				System.out.print("주문 상품번호 입력 : ");
+				int prodNo = Integer.parseInt(sc.next());
+				
+				System.out.print("주문 수량 입력 : ");
+				int prodCount = Integer.parseInt(sc.next());
+				
+				OrderDTO order = new OrderDTO();
+				order.setOrderProduct(prodNo);
+				order.setOrderCount(prodCount);
+				order.setOrderId(loginedCustomer.getCustId());
+				
+				orderDAO.insertOrder(order);
+								
+				System.out.println("주문 완료...");
 			}
 			
 		}
