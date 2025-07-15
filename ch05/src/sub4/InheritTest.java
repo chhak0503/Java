@@ -63,7 +63,7 @@ public class InheritTest {
 		<메서드>
 		 - work() 
 		    "제 이름은 [name] 이고 나이는 [age]세 입니다." 출력
-		    "저는 [field] 엔지니어 입니다." 출력
+		    "저는 [field] 엔지니어 입니다." 출력.
 		*/
 		
 		Doctor doctor = new Doctor("김유신", 23, "소아과");
