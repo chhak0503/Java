@@ -18,12 +18,10 @@ public class Student {
 	
 	public void enrollSubject(Subject subject) {
 		
-		subjects[subjectCount] = subject;
-		
+		subjects[subjectCount] = subject;		
 		subject.addStudent(this);
 		
-		scores[subjectCount++] = 0;
-		
+		scores[subjectCount++] = 0;		
 		
 		System.out.println(name + " - " + subject.getSubName() + " 과목 신청 완료");
 	}
@@ -33,7 +31,7 @@ public class Student {
 		
 		for(int i=0 ; i<subjectCount ; i++) {
 			
-			if(subjects[i].equals(subject)) { // 배열원소의 subject와 입력된 subject가 같으면
+			if(subjects[i] == subject) { // 배열원소의 subject와 입력된 subject가 같으면
 				scores[i] = score;			
 				System.out.println(name + " - " + subject.getSubName() + " 점수 입력 완료");
 			}		
