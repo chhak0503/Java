@@ -16,8 +16,7 @@ public class JdbcTest {
 		// DB정보
 		String host = "jdbc:oracle:thin:@localhost:1521:xe"; 
 		String user = "chhak0503"; 
-		String pass = "1234";
-		
+		String pass = "1234";		
 		
 		try {
 			// 데이터베이스 접속
