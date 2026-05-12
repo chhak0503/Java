@@ -39,7 +39,6 @@ class Outer {
 public class NestedTest {
 
 	public static void main(String[] args) {
-		
 		// 외부 객체 생성
 		Outer out = new Outer(1);
 		out.show();

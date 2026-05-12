@@ -6,47 +6,61 @@ package sub9;
  * 내용 : Java enum(열거상수) 실습
  */
 
-enum Day {
-	MONDAY, 
-	TUESDAY, 
-	WEDNESDAY, 
-	THURSDAY, 
-	FRIDAY, 
-	SATURDAY, 
-	SUNDAY 	
+// 열거형 정의
+enum Season {
+	// 열거 상수
+    SPRING,
+    SUMMER,
+    FALL,
+    WINTER
 }
+
+enum Grade {
+    VIP(10),
+    GOLD(5),
+    BASIC(1);
+
+    private int point;
+
+    Grade(int point) {
+        this.point = point;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+}
+
 
 public class EnumTest {
 	
 	public static void main(String[] args) {
 		
 		// 열거 상수 객체 생성
-		Day today = Day.THURSDAY;
-		
-		switch(today) {
-		
-		case MONDAY:
-			System.out.println("월요일 입니다.");
-			break;
-		case TUESDAY:
-			System.out.println("화요일 입니다.");
-			break;
-		case WEDNESDAY:
-			System.out.println("수요일 입니다.");
-			break;
-		case THURSDAY:
-			System.out.println("목요일 입니다.");
-			break;
-		case FRIDAY:
-			System.out.println("금요일 입니다.");
-			break;
-		case SATURDAY:
-			System.out.println("토요일 입니다.");
-			break;
-		case SUNDAY:
-			System.out.println("일요일 입니다.");
-			break;
-		}
+		Season season = Season.SUMMER;
+
+        System.out.println("season : " + season);
+
+        if(season == Season.SUMMER) {
+            System.out.println("여름입니다.");
+        }
+
+        // enum 전체 출력
+        for(Season s : Season.values()) {
+            System.out.println(s);
+        }
+        
+        // 열거 상수 객체 생성
+        Grade grade = Grade.VIP;
+
+        System.out.println("회원등급: " + grade);
+        System.out.println("포인트: " + grade.getPoint());
+
+        System.out.println("\n=== 전체 회원 등급 ===");
+
+        for(Grade g : Grade.values()) {
+            System.out.println(g + " : " + g.getPoint() + "점");
+        }
 		
 	}
 }
