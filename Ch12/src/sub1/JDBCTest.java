@@ -19,7 +19,7 @@ public class JDBCTest {
 		String pass = "1234";
 		
 		try {
-			// 1) 드라이버 로드
+			// 1) 드라이버 로드(생략가능)
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			// 2) DB 접속
@@ -36,12 +36,6 @@ public class JDBCTest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
-		
 	}
 }
 
