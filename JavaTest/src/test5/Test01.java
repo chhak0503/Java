@@ -1,7 +1,8 @@
-package test4;
+package test5;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 public class Test01 {
 	public static void main(String[] args) {
@@ -9,7 +10,6 @@ public class Test01 {
 		int answer = (int) (Math.random()*10)+1;		
 		int input = 0;
 		int count = 0;
-		
 				
 		do {
 			count++;
